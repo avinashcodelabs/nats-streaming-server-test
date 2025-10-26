@@ -2,6 +2,8 @@ import nats from "node-nats-streaming";
 import type { Message } from "node-nats-streaming";
 import { randomBytes } from "crypto";
 
+// ticketing - Stream server ClusterId
+// that random name is clientID
 const stan = nats.connect("ticketing", randomBytes(4).toString("hex"), {
   url: "http://localhost:4222",
 });
@@ -28,7 +30,7 @@ stan.on("connect", () => {
     .setDurableName("some-some");
 
   const subscription = stan.subscribe(
-    "ticket:created",
+    "ticket:created", // Name of the channel inside streaming server
     // queue group name is for selecting the particular(one)
     // listener whenever we have multiple, and send the event to
     // process it AND
