@@ -1,5 +1,4 @@
 import nats from "node-nats-streaming";
-import type { Message, Stan } from "node-nats-streaming";
 import { randomBytes } from "crypto";
 import { TicketCreatedListener } from "./events/ticket-create-listener.js";
 
